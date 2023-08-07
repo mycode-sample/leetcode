@@ -53,17 +53,20 @@ class Solution {
     public ListNode getListNode(int num) {
         ListNode headNode = new ListNode(0, new ListNode());
         ListNode currentNode = headNode.next;
-        do {
+        ListNode tailNode = headNode;
+        // num - 1 >=0说明数字还没有拆分完成
+        while (num - 1 >= 0) {
             int n = num % 10;
             num = num / 10;
             currentNode.val = n;
-            if (num - 1 >= 0) {
-                // 还有最后一位
-                ListNode nextNode = new ListNode();
-                currentNode.next = nextNode;
-                currentNode = currentNode.next;
-            }
-        } while (num >= 0);
+            // 最后一位不需要后继节点
+            // 还有最后一位
+            ListNode nextNode = new ListNode();
+            tailNode = currentNode;
+            currentNode.next = nextNode;
+            currentNode = currentNode.next;
+        }
+        tailNode.next = null;
         return headNode.next;
     }
 
