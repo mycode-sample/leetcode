@@ -38,6 +38,7 @@ class Solution {
         for (int i = 0; i < size; i++) {
             num = num + list.get(i) * pow(10, i);
         }
+        // System.out.println("数字:" + num);
         return num;
 
     }
@@ -67,26 +68,8 @@ class Solution {
             currentNode = currentNode.next;
         }
         tailNode.next = null;
+        // System.out.println("链表:" + headNode.next);
         return headNode.next;
-    }
-
-    public static void main(String[] args) {
-        ListNode la1 = new ListNode(9);
-        ListNode la2 = new ListNode(9, la1);
-        ListNode la3 = new ListNode(9, la2);
-        ListNode la4 = new ListNode(9, la3);
-        ListNode la5 = new ListNode(9, la4);
-        ListNode la6 = new ListNode(9, la5);
-        ListNode la7 = new ListNode(9, la6);
-
-        ListNode lb1 = new ListNode(9);
-        ListNode lb2 = new ListNode(9, lb1);
-        ListNode lb3 = new ListNode(9, lb2);
-        ListNode lb4 = new ListNode(9, lb3);
-
-        Solution s = new Solution();
-        ListNode result = s.addTwoNumbers(la7, lb4);
-        System.out.println(result);
     }
 }
 // @lc code=end
