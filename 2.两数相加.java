@@ -35,10 +35,11 @@ class Solution {
         }
         int num = 0;
         int size = list.size();
-        while (size > 0) {
-            num = num + list.get(size) * pow(10, size);
+        for (int i = 0; i < size; i++) {
+            num = num + list.get(i) * pow(10, i);
         }
-        return 1;
+        return num;
+
     }
 
     public int pow(int a, int b) {
@@ -50,16 +51,39 @@ class Solution {
     }
 
     public ListNode getListNode(int num) {
-        ListNode currentNode = null;
-        ListNode listNode = currentNode;
+        ListNode headNode = new ListNode(0, new ListNode());
+        ListNode currentNode = headNode.next;
         do {
             int n = num % 10;
-            num = (int) (num / 10 - n * 0.1);
-            ListNode next = new ListNode();
-            currentNode = new ListNode(n, next);
-            currentNode = next;
-        } while (num > 0);
-        return listNode;
+            num = num / 10;
+            currentNode.val = n;
+            if (num - 1 >= 0) {
+                // 还有最后一位
+                ListNode nextNode = new ListNode();
+                currentNode.next = nextNode;
+                currentNode = currentNode.next;
+            }
+        } while (num >= 0);
+        return headNode.next;
+    }
+
+    public static void main(String[] args) {
+        ListNode la1 = new ListNode(9);
+        ListNode la2 = new ListNode(9, la1);
+        ListNode la3 = new ListNode(9, la2);
+        ListNode la4 = new ListNode(9, la3);
+        ListNode la5 = new ListNode(9, la4);
+        ListNode la6 = new ListNode(9, la5);
+        ListNode la7 = new ListNode(9, la6);
+
+        ListNode lb1 = new ListNode(9);
+        ListNode lb2 = new ListNode(9, lb1);
+        ListNode lb3 = new ListNode(9, lb2);
+        ListNode lb4 = new ListNode(9, lb3);
+
+        Solution s = new Solution();
+        ListNode result = s.addTwoNumbers(la7, lb4);
+        System.out.println(result);
     }
 }
 // @lc code=end
