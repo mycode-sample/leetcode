@@ -66,28 +66,7 @@ var getList = function getList(num) {
 }
 // @lc code=end
 
-l1 = {
-  val: 2,
-  next: {
-    val: 4,
-    next: {
-      val: 3,
-    }
-  }
+
+module.exports.lc1 = {
+  getList, getNum, addTwoNumbers, ListNode
 };
-
-l2 = {
-  val: 5,
-  next: {
-    val: 6,
-    next: {
-      val: 4,
-    }
-  }
-}
-
-console.log(getNum(l1))
-console.log(getNum(l2));
-var result = addTwoNumbers(l1, l2);
-console.log(result);
-console.log(typeof result);
